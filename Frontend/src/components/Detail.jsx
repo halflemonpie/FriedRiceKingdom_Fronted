@@ -3,6 +3,13 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+// to-do: 
+//change backend seed data
+//change tasks schema
+//merge
+//filter
+
+
 
 export default function Detail () {
     const params = useParams().id
@@ -36,7 +43,7 @@ export default function Detail () {
     useEffect(() => {
         apiCall()
         
-    }, [])
+    }, [editing])
     
     const handleEdit = (item) => {
         setEditing({
@@ -76,17 +83,20 @@ export default function Detail () {
     }
 
     const handleBoolean = (item) => {
-        if (data.complete) {
+        console.log(data[item]);
             setData({
                 ...data,
-                complete: false
+                [item]: !data[item]
             })
-        } else {
-            setData({
-                ...data,
-                complete: true
-            })
-        }
+        console.log(data[item]);
+            apiUpdate()
+    }
+
+    const handleDelete = () => {
+        axios.delete(`http://localhost:8080/projects/${params}`)
+        .then((res) => {
+            console.log(res);
+        })
     }
 
 
@@ -110,6 +120,8 @@ export default function Detail () {
             
             
             {loading ? <p>loading</p> : <p>Complete: {data.complete.toString()}</p>}<button onClick={() => {handleBoolean("complete")}}>Click Me tO Change</button>
+
+            <button onClick={handleDelete}>Delete Event!</button>
         </div>
     )
 }
