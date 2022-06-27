@@ -2,9 +2,14 @@ import {useState} from "react"
 import axios from "axios"
 import React from "react"
 
+<<<<<<< HEAD
 
 const NewForm = props => {
     
+=======
+const NewForm = props => {
+
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
     const [data, setData] = useState({
         name: "",
         description: "",
@@ -24,7 +29,10 @@ const NewForm = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
        axios.post("http://localhost:8080/projects", data)
        .then(resp => {
             console.log(resp);
@@ -35,7 +43,10 @@ const NewForm = props => {
 
     return (
         <div>
+<<<<<<< HEAD
             <p3 className="nav">Please input your new project information below:</p3>
+=======
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
             <form className="form" onSubmit={handleSubmit}>
                 <input className="input" onChange={handleChange} type="text" name="name" placeholder='name'/>
                 <input className="input" onChange={handleChange} type="text" name="description" placeholder='description' />

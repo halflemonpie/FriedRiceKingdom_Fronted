@@ -8,11 +8,18 @@
   border-style: solid;
   width: 15vw;
   height: 12vw;
+<<<<<<< HEAD
+=======
+  display: flex;
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
   padding: 4vw;
   margin: 2vw;
   align-items: center;
   border-style: solid;
+<<<<<<< HEAD
   
+=======
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
 }
 
 .header {
@@ -21,7 +28,13 @@
 }
 
 .cardDisplay {
+<<<<<<< HEAD
   display: flex;
+=======
+  /* border-style: solid; */
+  display: flex;
+  flex-direction: column;
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
 }
 
 .form {
@@ -38,6 +51,7 @@
 .submit {
   padding: 10px;
   margin: 10px;
+<<<<<<< HEAD
 }
 
 .filter {
@@ -45,4 +59,6 @@
   flex-direction: column;
   align-items: center;
   color: purple;
+=======
+>>>>>>> dfeae613d07493316ef29d113b54045cf4a5db30
 }
