@@ -30,14 +30,10 @@ function App() {
     <div className="App">
       <nav>
         <Link to="/">
-<<<<<<< HEAD
           <div className="nav">
           <h1 className="nav">Home</h1> 
           <input className="filter" type="text" name="filter" placeholder='Filter your projects'/>
           </div>
-=======
-          <h1 className="nav">Fried Rice Kingdom</h1> 
->>>>>>> main
         </Link>
       </nav>
       <main>
