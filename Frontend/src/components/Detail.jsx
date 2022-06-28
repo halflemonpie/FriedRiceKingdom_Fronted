@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-// to-do: 
-//change tasks schema
+// to-do:
 //filter
 // re-render after adding to do
 
@@ -15,13 +14,16 @@ export default function Detail () {
     const [data, setData] = useState({})
     const [task, setTask] = useState("")
     const [loading, setLoading] = useState(true)
+    // const [toDoList, setTodoList] = useState()
     const [editing, setEditing] = useState({
         name:false,
+        image:false,
         date:false,
         description:false,
         importance:false,
         category: false,
-        complete: false
+        complete: false,
+        todo: false
     })
 
     const apiCall = () => {
@@ -53,10 +55,19 @@ export default function Detail () {
             name: task,
             complete: false
         }
+        setData({
+            ...data,
+            task: data.tasks.push(request)
+        })
+        
         axios.put(`http://localhost:8080/projects/newTodo/${params}`, request)
         .then((res) => {
             console.log(res);
             setLoading(false)
+            setEditing({
+                ...editing,
+                todo:false
+            })
         })
     }
 
@@ -69,19 +80,22 @@ export default function Detail () {
         apiUpdate()
     },[data.complete])
 
-
+    
     let toDoList;
-    useEffect(() => {
-        
-    },[])
     if (loading) {
-        toDoList = (<h1>loading</h1>)
+        toDoList = <h1>loading</h1>
     } else {
-        toDoList = data.tasks.map((todo) => {
-            return (
-                <p>{todo.name}</p>
-            )
-        })
+        toDoList = (
+            data.tasks.map((todo) => {
+                console.log(todo.complete);
+                return (
+                    <div>
+                        <span>{todo.name}</span>
+                        <span>{todo.complete.toString()}</span>
+                    </div>
+                )
+            })
+        )
     }
     
     
@@ -138,6 +152,9 @@ export default function Detail () {
             {(editing.name) ? <input name="name" type="text" onChange={handleChange} value={data.name} /> : <h1>{data.name}</h1>}
             {(editing.name) ? <button onClick={() => {handleSubmit("name")}}>Save</button> : <button onClick={() => {handleEdit("name")}}>Edit for name</button>}
             
+            {(editing.image) ? <input name="image" type="text" onChange={handleChange} value={data.image} /> : <img src={data.image} alt={`image for ${data.name}`}/> }
+            {(editing.image) ? <button onClick={() => {handleSubmit("image")}}>Save</button> : <button onClick={() => {handleEdit("image")}}>Edit for Image</button>}
+
             {(editing.date) ? <input name="date" type="date" onChange={handleChange} value={data.date} /> : <p>Date: {data.date}</p>}
             {(editing.date) ? <button onClick={() => {handleSubmit("date")}}>Save</button> : <button onClick={() => {handleEdit("date")}}>Edit for date</button>}
             
@@ -154,11 +171,14 @@ export default function Detail () {
 
             <button onClick={handleDelete}>Delete Event!</button>
 
+            {/* {loading ? <p>loading</p> : data.tasks.map((todo) => {return (<div><p>{todo.name}</p><p>{todo.complete}</p></div>)})} */}
             {toDoList}
 
-            <button>add todo</button>
-            <input type="text" name="task" onChange={(e) => setTask(e.target.value)}/>
-            <button onClick={handleNewTodo}>add</button>
+            {(editing.todo) ? <div><input type="text" name="task" onChange={(e) => setTask(e.target.value)}/>  <button onClick={handleNewTodo}>add</button></div> : <button onClick={() => handleEdit("todo")}>add todo</button>}
+
+            
+            
+           
 
         </div>
     )
