@@ -12,7 +12,6 @@ function App() {
   const [data, setData] = useState([]);
   const API = 'http://localhost:8080/projects';
   const [query, setQuery] = useState('');
-  const [items, setItems] = useState('');
 
   console.log(query);
   useEffect(() => {
@@ -29,8 +28,8 @@ function App() {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`localhost:8080/projects/project/${query}`);
-      setItems(result.data);
+      const result = await axios(`${API}/${query}`);
+      setQuery(result.data);
     };
 
     fetchItems();
