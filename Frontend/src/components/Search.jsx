@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import react from 'react';
+import axios from 'axios';
 
-const Search = ({ getQuery }) => {
+
+const Search = ({ getQuery, fetchItems }) => {
   const [text, setText] = useState('');
 
   const onChange = q => {
@@ -10,7 +13,7 @@ const Search = ({ getQuery }) => {
 
   return (
     <section className="search">
-      <form>
+      <form onSubmit={fetchItems}>
         <input
           type="text"
           className="form-control"

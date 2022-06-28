@@ -12,6 +12,7 @@ function App() {
   const [data, setData] = useState([]);
   const API = 'http://localhost:8080/projects';
   const [query, setQuery] = useState('');
+  const [queryResult, setQueryResult] = useState({})
 
   console.log(query);
   useEffect(() => {
@@ -26,26 +27,25 @@ function App() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios(`${API}/${query}`);
-      setQuery(result.data);
-    };
+  const fetchItems = async (e) => {
+    e.preventDefault()
+    console.log('fetching items')
+    const result = await axios(`${API}/${query}`);
+    setQueryResult(result.data);
+  };
 
-    fetchItems();
-  }, [query]);
 
   return (
     <div className="App">
       <nav>
         <Link to="/">
           <h1 className="nav">Fried Rice Kingdom</h1>
-          <Search getQuery={q => setQuery(q)} />
+          <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/>
         </Link>
       </nav>
       <main>
         <Routes>
-          <Route path="/" element={<GetData data={data} />} />
+          <Route path="/" element={<GetData data={data} setQueryResult={setQueryResult} />} />
           <Route path="/create" element={<NewProject />} />
           <Route path="id/:id" element={<Detail />} />
         </Routes>
