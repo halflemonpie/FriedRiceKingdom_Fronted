@@ -3,7 +3,6 @@ import axios from "axios"
 import React from "react"
 
 const NewForm = props => {
-    
     const [data, setData] = useState({
         name: "",
         description: "",

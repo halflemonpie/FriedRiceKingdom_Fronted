@@ -9,7 +9,8 @@ const CalendarDisplay = () => {
 
     return (
      <div >
-      <Calendar className="calendarCells" onChange={setDate} value={date} onClick={console.log("hi")} />
+      <Calendar className="calendarCells" onChange={setDate} value={date} onClick={console.log(date)} />
+      {date.toString()}
     </div>
 
     )
