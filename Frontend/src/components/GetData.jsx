@@ -6,7 +6,7 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import NewProject from './NewProject'
 
-const GetData = ({data}) =>  {
+const GetData = ({data, setQueryResult}) =>  {
 
 const mapVariables = data.map((key) => {
       return (
@@ -27,6 +27,7 @@ return (
            <Link to="/create">
             <div className="cardDisplay">
                     <h5 id="card" > Create A New Project</h5>
+                    {setQueryResult}
             </div>
           </Link>
             {mapVariables}

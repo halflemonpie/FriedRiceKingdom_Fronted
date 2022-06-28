@@ -6,6 +6,8 @@ import axios from "axios";
 // to-do:
 //filter
 // change task and projects schema
+// delete todo
+// change true false todo
 
 
 
