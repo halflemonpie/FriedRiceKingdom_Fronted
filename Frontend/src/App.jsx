@@ -1,20 +1,58 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import { Routes, Route, Link } from "react-router-dom";
+import react from 'react';
+import './App.css';
+import { useState, useEffect } from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
+import axios from 'axios';
+import GetData from './components/GetData';
+import NewProject from './components/NewProject';
 import Detail from './components/Detail';
+import Search from './components/Search';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState([]);
+  const API = 'http://localhost:8080/projects';
+  const [query, setQuery] = useState('');
+  const [items, setItems] = useState('');
+
+  console.log(query);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get(API);
+        setData(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const result = await axios(`localhost:8080/projects/project/${query}`);
+      setItems(result.data);
+    };
+
+    fetchItems();
+  }, [query]);
 
   return (
     <div className="App">
-      <h1>Hello Fried Rice</h1>
-    <Routes>[]
-      <Route path="/:id" element={<Detail />} />
-    </Routes>
+      <nav>
+        <Link to="/">
+          <h1 className="nav">Fried Rice Kingdom</h1>
+          <Search getQuery={q => setQuery(q)} />
+        </Link>
+      </nav>
+      <main>
+        <Routes>
+          <Route path="/" element={<GetData data={data} />} />
+          <Route path="/create" element={<NewProject />} />
+          <Route path="id/:id" element={<Detail />} />
+        </Routes>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
