@@ -28,13 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      
       <nav>
         <Link to="/">
           <h1 className="nav">Fried Rice Kingdom</h1> 
-          <Link to="/create">
-            <h5 id="card" className="cardDisplay"> Create A New Project</h5>
-          </Link>
         </Link>
       </nav>
       <main>

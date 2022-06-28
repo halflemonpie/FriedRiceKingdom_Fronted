@@ -4,16 +4,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // to-do: 
-//change backend seed data
 //change tasks schema
-//merge
 //filter
+// re-render after adding to do
 
 
 
 export default function Detail () {
     const params = useParams().id
     const [data, setData] = useState({})
+    const [task, setTask] = useState("")
     const [loading, setLoading] = useState(true)
     const [editing, setEditing] = useState({
         name:false,
@@ -32,18 +32,59 @@ export default function Detail () {
             setLoading(false)
         })
     }
-
+    
     const apiUpdate = () => {
         axios.put(`http://localhost:8080/projects/${params}`, data)
         .then((res) => {
             console.log(res);
         })
     }
+    
+    const handleDelete = () => {
+        axios.delete(`http://localhost:8080/projects/${params}`)
+        .then((res) => {
+            console.log(res);
+        })
+    }
+
+    const handleNewTodo = () => {
+        console.log("data sent");
+        let request = {
+            name: task,
+            complete: false
+        }
+        axios.put(`http://localhost:8080/projects/newTodo/${params}`, request)
+        .then((res) => {
+            console.log(res);
+            setLoading(false)
+        })
+    }
 
     useEffect(() => {
         apiCall()
         
-    }, [editing])
+    }, [])
+
+    useEffect(() => {
+        apiUpdate()
+    },[data.complete])
+
+
+    let toDoList;
+    useEffect(() => {
+        
+    },[])
+    if (loading) {
+        toDoList = (<h1>loading</h1>)
+    } else {
+        toDoList = data.tasks.map((todo) => {
+            return (
+                <p>{todo.name}</p>
+            )
+        })
+    }
+    
+    
     
     const handleEdit = (item) => {
         setEditing({
@@ -83,21 +124,13 @@ export default function Detail () {
     }
 
     const handleBoolean = (item) => {
-        console.log(data[item]);
-            setData({
-                ...data,
-                [item]: !data[item]
-            })
-        console.log(data[item]);
-            apiUpdate()
-    }
-
-    const handleDelete = () => {
-        axios.delete(`http://localhost:8080/projects/${params}`)
-        .then((res) => {
-            console.log(res);
+        console.log(data.complete);
+        setData({
+            ...data,
+            [item]: !data[item]
         })
     }
+
 
 
     return (
@@ -114,14 +147,19 @@ export default function Detail () {
             {(editing.category) ? <input name="category" type="text" onChange={handleChange} value={data.category} /> : <p>Category: {data.category}</p>}
             {(editing.category) ? <button onClick={() => {handleSubmit("category")}}>Save</button> : <button onClick={() => {handleEdit("category")}}>Edit for category</button>}
 
-            
             <p>Importance Level:{data.importance}</p>
             {(editing.importance) ? <div><button onClick={() => {handleImportance("+")}}>+</button><button onClick={() => {handleImportance("-")}}>-</button><button onClick={() => {handleSubmit("importance")}}>Save</button></div> : <button onClick={() => {handleEdit("importance")}}>edit for importance</button>}
-            
-            
+             
             {loading ? <p>loading</p> : <p>Complete: {data.complete.toString()}</p>}<button onClick={() => {handleBoolean("complete")}}>Click Me tO Change</button>
 
             <button onClick={handleDelete}>Delete Event!</button>
+
+            {toDoList}
+
+            <button>add todo</button>
+            <input type="text" name="task" onChange={(e) => setTask(e.target.value)}/>
+            <button onClick={handleNewTodo}>add</button>
+
         </div>
     )
 }
