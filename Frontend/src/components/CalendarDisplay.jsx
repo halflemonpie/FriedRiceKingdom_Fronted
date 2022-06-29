@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar'
 import App from '../App.css';
 import 'react-calendar/dist/Calendar.css';
+import moment from 'moment';
+console.log(moment.now());
 
 const CalendarDisplay = (data) => {
 
     const [date, setDate] = useState(new Date());
-  
-    let displayDate = (
-      (date.getFullYear() + "-" + 0 + (date.getMonth() + 1) + "-" + date.getDate()) 
-    )
+
+    let displayDate = moment(date).format().slice(0, 10);    
     
     const dataDisplay = data.data.filter((project) => {
         return (
@@ -27,13 +27,14 @@ const CalendarDisplay = (data) => {
 
         console.log(projectsDisplay);
 
+
     return (
      <div >
       <Calendar 
       className="calendarCells" 
       onChange={setDate} 
       value={date} 
-      onClick={console.log('hi')} />
+      onClick={console.log()}/>
       {projectsDisplay}
 
     </div>
