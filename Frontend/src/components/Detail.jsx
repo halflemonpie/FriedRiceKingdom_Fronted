@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // to-do:
-//filter
-// change task and projects schema
 // delete todo
 // change true false todo
 // create event redirect to detail page
@@ -85,17 +83,22 @@ export default function Detail () {
     },[data.complete])
 
     
+
+    
     let toDoList;
     if (loading) {
         toDoList = <h1>loading</h1>
     } else {
         toDoList = (
-            data.tasks.map((todo) => {
-                console.log(todo.complete);
+            data.tasks.map((todo, index) => {
+                console.log(todo);
                 return (
                     <div>
+                    <div onClick={() => handleBooleanTask(index)}>
                         <span>{todo.name}</span>
                         <span>{todo.complete.toString()}</span>
+                    </div>
+                    <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
                     </div>
                 )
             })
@@ -147,6 +150,20 @@ export default function Detail () {
             ...data,
             [item]: !data[item]
         })
+    }
+
+    const handleBooleanTask = (index) => {
+    data.tasks[index].complete = !data.tasks[index].complete
+    setData({...data})
+    apiUpdate()
+ 
+    }
+
+    const handleDeleteTodo = (index) => {
+        data.tasks.splice(index, 1)
+        setData({...data})
+        console.log(data.tasks);
+        apiUpdate()
     }
 
 

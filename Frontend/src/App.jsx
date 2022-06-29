@@ -31,12 +31,6 @@ function App() {
     fetchData();
   }, []);
 
-  const fetchItems = async (e) => {
-    e.preventDefault()
-    console.log('fetching items')
-    const result = await axios(`${API}/${query}`);
-    setQueryResult(result.data);
-  };
 
 
   return (
@@ -44,7 +38,6 @@ function App() {
       <nav>
         <Link to="/">
           <h1 className="nav">Fried Rice Kingdom</h1>
-          <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/>
         </Link>
       </nav>
       <main>
