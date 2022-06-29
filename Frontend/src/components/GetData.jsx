@@ -3,7 +3,7 @@ import App from '../App';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../App.css'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 import NewProject from './NewProject'
 import CatFilterBar from "./CatFilterBar";
 import NameFilterBar from "./NameFilterBar";
@@ -39,7 +39,7 @@ const GetData = ({dataRaw,setData, data, setQueryResult }) =>  {
     console.log(filteredProjects);
     setData(filteredProjects)
   }
-
+  console.log(data)
 const mapVariables = data.map((key) => {
       return (
         <Link to={`/id/${key._id}`}>

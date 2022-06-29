@@ -7,6 +7,7 @@ import GetData from './components/GetData';
 import NewProject from './components/NewProject'
 import Detail from './components/Detail';
 import Search from './components/Search';
+import Calendar from './components/CalendarDisplay'
 
 function App() {
   const [data, setData] = useState([]);
@@ -39,12 +40,15 @@ function App() {
         <Link to="/">
           <h1 className="nav">Fried Rice Kingdom</h1>
         </Link>
+        <Link to="/calendar"> Calendar
+        </Link>
       </nav>
       <main>
         <Routes>
           <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} setQueryResult={setQueryResult} />} />
           <Route path="/create" element={<NewProject />} />
           <Route path="id/:id" element={<Detail />} />
+          <Route path="/calendar" element={<Calendar data={data}/>} />
         </Routes>
       </main>
     </div>
