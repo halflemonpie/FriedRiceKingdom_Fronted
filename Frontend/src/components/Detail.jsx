@@ -8,6 +8,7 @@ import axios from "axios";
 // change task and projects schema
 // delete todo
 // change true false todo
+// create event redirect to detail page
 
 
 

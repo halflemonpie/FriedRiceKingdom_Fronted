@@ -10,16 +10,20 @@ import Search from './components/Search';
 
 function App() {
   const [data, setData] = useState([]);
+  const [dataRaw, setDataRaw] = useState([]);
   const API = 'http://localhost:8080/projects';
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState({})
 
-  console.log(query);
+  
+
+  // console.log(query);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(API);
         setData(response);
+        setDataRaw(response);
       } catch (error) {
         console.error(error);
       }
@@ -45,7 +49,7 @@ function App() {
       </nav>
       <main>
         <Routes>
-          <Route path="/" element={<GetData data={data} setQueryResult={setQueryResult} />} />
+          <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} setQueryResult={setQueryResult} />} />
           <Route path="/create" element={<NewProject />} />
           <Route path="id/:id" element={<Detail />} />
         </Routes>
