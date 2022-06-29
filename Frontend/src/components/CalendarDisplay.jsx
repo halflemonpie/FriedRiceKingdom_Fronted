@@ -21,7 +21,7 @@ const CalendarDisplay = (data) => {
             return(
                 <div id="card">
                     <p>{project.name}</p>
-                    <p>{project._id}</p>
+                    <p>{project.category}</p>
                 </div>
             )
         })
@@ -35,8 +35,6 @@ const CalendarDisplay = (data) => {
       onChange={setDate} 
       value={date} 
       onClick={console.log('hi')} />
-
-      {displayDate}
       {projectsDisplay}
 
     </div>
