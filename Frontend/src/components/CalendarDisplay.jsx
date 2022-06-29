@@ -16,7 +16,6 @@ const CalendarDisplay = (data) => {
             project.date.slice(0, 10) == displayDate
         )
     })
-
         const projectsDisplay = dataDisplay.map((project) => {
             return(
                 <div id="card">
