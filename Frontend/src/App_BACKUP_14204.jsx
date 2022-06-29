@@ -1,26 +1,21 @@
 import react from 'react'
 import './App.css'
-<<<<<<< HEAD
 import { Routes, Route, Link } from "react-router-dom";
 import Detail from './components/Detail';
-=======
 import { useState, useEffect } from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
 import axios from 'axios';
 import GetData from './components/GetData';
 import NewProject from './components/NewProject'
->>>>>>> origin/jillian
 
 function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
       <h1>Hello Fried Rice</h1>
     <Routes>[]
       <Route path="/:id" element={<Detail />} />
     </Routes>
-=======
       <nav>
         <Link to="/">
           <h1 className="nav">Home</h1> 
@@ -35,7 +30,6 @@ function App() {
         <Route path="/create" element={<NewProject />}/>
       </Routes>
     </main>
->>>>>>> origin/jillian
     </div>
   )
 }
