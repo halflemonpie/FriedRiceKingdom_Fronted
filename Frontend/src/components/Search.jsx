@@ -21,6 +21,9 @@ const Search = ({ getQuery, fetchItems }) => {
           onChange={e => onChange(e.target.value)}
           placeholder="search events by category"
         ></input>
+        {/* <button onClick={fetchItems}>
+          submit
+        </button> */}
       </form>
     </section>
   );
