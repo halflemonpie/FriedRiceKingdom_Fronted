@@ -1,11 +1,20 @@
 .nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: left;
+  background: rgb(255, 255, 255);
+  height: 100px; 
+  width: 100%;
+  left: 0;
 }
+
+ body{
+   background: rgb(88, 88, 199);
+ }
 
 #card {
   border-style: solid;
+  border-radius: 10px;
   width: 15vw;
   height: 12vw;
   display: flex;
@@ -13,31 +22,93 @@
   margin: 2vw;
   align-items: center;
   border-style: solid;
+  background: rgb(228, 228, 228);
 }
 
-.header {
+
+
+/* .header {
   display: flex;
   align-items: center;
-}
+  background: white;
+
+}  */
 
 .cardDisplay {
-  /* border-style: solid; */
   display: flex;
   flex-direction: column;
+  border-radius: solid 20px; 
+  text-align: center;
+  margin: 5px;
+  padding: 4vw;
+  margin: 1vw;
+  display: inline-block;
+  width: 300px;
+  font-size: 20px;
 }
 
-.form {
-  display: flex;
-  padding: 10px;
-  margin: 10px;
+li{
+  list-style-type: none;
+  text-decoration: none;
 }
+#logo {
+  list-style-type: none;
+  padding: 20px;
+}
+
+#events{
+  align-items: right;
+  padding: 50px;
+  list-style-type: none;
+
+
+}
+#account{
+  align-items: right;
+  padding: 50px;
+  list-style-type: none;
+
+}
+
+
+#card{
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  /* border: 1px solid black; */
+  width: 300px;
+  font-size: 20px;
+}
+
+
+.form {
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(228, 228, 228);
+  width: 300px;
+  font-size: 20px;
+}
+  /* display: grid;
+  padding: 10px;
+  margin: 200px; */
+
 
 .input {
   padding: 10px;
   margin: 10px;
+  border-radius: 5px;
 }
 
 .submit {
   padding: 10px;
   margin: 10px;
+  border-radius: 5px;
+}
+
+#logo{
+  height: 80px;
+  align-items: left;
 }
