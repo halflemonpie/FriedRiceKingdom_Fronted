@@ -43,10 +43,10 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <Link to="/">
-          <h1 className="nav">Fried Rice Kingdom</h1>
+
+         
           <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/>
-        </Link>
+    
         
        
 <div className='header'>
@@ -75,9 +75,9 @@ function App() {
       </nav>
 
       <Link to="/create">
-        <div>
-        <h5 id="card" className="cardDisplay"> Create A New Project</h5>
-        </div>
+   
+        {/* <h5 id="card" className="cardDisplay"> Create A New Project</h5> */}
+    
 
           </Link>
       <main>
