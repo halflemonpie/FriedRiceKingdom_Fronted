@@ -6,50 +6,60 @@ import axios from 'axios';
 import GetData from './components/GetData';
 import NewProject from './components/NewProject'
 import Detail from './components/Detail';
-import CalendarDisplay from './components/CalendarDisplay';
+import Search from './components/Search';
+import Calendar from './components/CalendarDisplay'
 
 function App() {
-  const [data, setData] = useState([])
-  const API = "http://localhost:8080/projects"
+  const [data, setData] = useState([]);
+  const [dataRaw, setDataRaw] = useState([]);
+  const API = 'http://localhost:8080/projects';
+  const [query, setQuery] = useState('');
+  const [queryResult, setQueryResult] = useState({})
 
+  
+
+  // console.log(query);
   useEffect(() => {
     const fetchData = async () => {
-    
-      try { 
-        const {data: response} = await axios.get(API)
+      try {
+        const { data: response } = await axios.get(API);
         setData(response);
+        setDataRaw(response);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
     fetchData();
-    
-    
-    }, []);
+  }, []);
+
+  const fetchItems = async (e) => {
+    e.preventDefault()
+    console.log('fetching items')
+    const result = await axios(`${API}/${query}`);
+    setQueryResult(result.data);
+  };
+
 
   return (
     <div className="App">
       <nav>
         <Link to="/">
-          <div className="nav">
-          <h1 className="nav">Home</h1> 
-          <input className="filter" type="text" name="filter" placeholder='Filter your projects'/>
-          </div>
+          <h1 className="nav">Fried Rice Kingdom</h1>
+          <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/>
         </Link>
-        <Link to="/calendar">
-        <h1 className="nav">Calendar</h1> 
+        <Link to="/calendar"> Calendar
         </Link>
       </nav>
       <main>
-      <Routes>
-        <Route path="/" element={<GetData data={data}/>}/>
-        <Route path="/calendar" element={<CalendarDisplay/>}/>
-        <Route path="/create" element={<NewProject />}/>
-        <Route path="id/:id" element={<Detail />} />
-      </Routes>
-    </main>
+        <Routes>
+          <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} setQueryResult={setQueryResult} />} />
+          <Route path="/create" element={<NewProject />} />
+          <Route path="id/:id" element={<Detail />} />
+          <Route path="/calendar" element={<Calendar data={data}/>} />
+        </Routes>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
