@@ -32,12 +32,6 @@ function App() {
     fetchData();
   }, []);
 
-  const fetchItems = async (e) => {
-    e.preventDefault()
-    console.log('fetching items')
-    const result = await axios(`${API}/${query}`);
-    setQueryResult(result.data);
-  };
 
 
   return (

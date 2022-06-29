@@ -34,11 +34,11 @@ const NewForm = props => {
     return (
         <div>
             <form className="form" onSubmit={handleSubmit}>
-                <input className="input" onChange={handleChange} type="text" name="name" placeholder='name'/>
-                <input className="input" onChange={handleChange} type="text" name="description" placeholder='description' />
-                <input className="input" onChange={handleChange} type="text" name="category" placeholder='category'/>
-                <input className="input" onChange={handleChange} type="number" name="importance" placeholder='importance'/>
-                <input className="input" onChange={handleChange} type="date" name="date" placeholder='date'/>
+                <input required className="input" onChange={handleChange} type="text" name="name" placeholder='name'/>
+                <input required className="input" onChange={handleChange} type="text" name="description" placeholder='description' />
+                <input required className="input" onChange={handleChange} type="text" name="category" placeholder='category'/>
+                <input required className="input" onChange={handleChange} type="number" name="importance" placeholder='importance'/>
+                <input required className="input" onChange={handleChange} type="date" name="date" placeholder='date'/>
                 <input className="input" onChange={handleChange} type="hidden" name="complete" placeholder='false'/>
                 <input className="input" onChange={handleChange} type="text" name="image" placeholder='image URL'/>
                 <input className="input" type="submit" value="Create Project"/>
