@@ -7,17 +7,12 @@ import GetData from './components/GetData';
 import NewProject from './components/NewProject'
 import Detail from './components/Detail';
 import Logo from './Logo.png'; 
-import Search from './components/Search';
 import Calendar from './components/CalendarDisplay'
 
 function App() {
   const [data, setData] = useState([]);
   const [dataRaw, setDataRaw] = useState([]);
   const API = 'http://localhost:8080/projects';
-  const [query, setQuery] = useState('');
-  const [queryResult, setQueryResult] = useState({})
-
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,15 +27,10 @@ function App() {
     fetchData();
   }, []);
 
-
-
   return (
     <div className="App">
       <nav>
-    
-        
-       
-<div className='header'>
+    <div className='header'>
             <div>
                 <ul className="nav">
                     <li>
@@ -70,15 +60,9 @@ function App() {
        
       </nav>
 
-      <Link to="/create">
-   
-        {/* <h5 id="card" className="cardDisplay"> Create A New Project</h5> */}
-    
-
-          </Link>
       <main>
         <Routes>
-          <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} setQueryResult={setQueryResult} />} />
+          <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} />} />
           <Route path="/create" element={<NewProject />} />
           <Route path="id/:id" element={<Detail />} />
           <Route path="/calendar" element={<Calendar data={data}/>} />
