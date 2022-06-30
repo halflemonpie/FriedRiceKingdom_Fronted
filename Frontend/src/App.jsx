@@ -19,28 +19,25 @@ function App() {
 
   
 
-  // console.log(query);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { data: response } = await axios.get(API);
-  //       setData(response);
-  //       setDataRaw(response);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get(API);
+        setData(response);
+        setDataRaw(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
 
 
   return (
     <div className="App">
       <nav>
-
-         
-          {/* <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/> */}
     
         
        
