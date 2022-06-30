@@ -92,15 +92,25 @@ console.log(data)
         toDoList = (
             data.tasks.map((todo, index) => {
                 console.log(todo);
-                return (
-                    <div>
-                    <div onClick={() => handleBooleanTask(index)}>
-                        <span>{todo.name}</span>
-                        <span>{todo.complete.toString()}</span>
-                    </div>
-                    <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
-                    </div>
-                )
+                if (!todo.complete) {
+                    return (
+                        <div>
+                        <div onClick={() => handleBooleanTask(index)}>
+                            <span>{todo.name}</span>
+                        </div>
+                        <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div>
+                        <div onClick={() => handleBooleanTask(index)}>
+                            <s>{todo.name}</s>
+                        </div>
+                        <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
+                        </div>
+                    )
+                }
             })
         )
     }
@@ -188,7 +198,7 @@ console.log(data)
             <p>Importance Level:{data.importance}</p>
             {(editing.importance) ? <div><button onClick={() => {handleImportance("+")}}>+</button><button onClick={() => {handleImportance("-")}}>-</button><button onClick={() => {handleSubmit("importance")}}>Save</button></div> : <button onClick={() => {handleEdit("importance")}}>edit for importance</button>}
              
-            {loading ? <p>loading</p> : <p>Complete: {data.complete.toString()}</p>}<button onClick={() => {handleBoolean("complete")}}>Click Me tO Change</button>
+            {loading ? <p>loading</p> : <p>Complete: {data.complete ? "✅" : "❌"}</p>}<button onClick={() => {handleBoolean("complete")}}>Click Me tO Change</button>
 
             <button onClick={handleDelete}>Delete Event!</button>
 
