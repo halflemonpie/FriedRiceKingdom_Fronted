@@ -19,7 +19,6 @@ function App() {
 
   
 
-  // console.log(query);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,9 +37,6 @@ function App() {
   return (
     <div className="App">
       <nav>
-
-         
-          {/* <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/> */}
     
         
        

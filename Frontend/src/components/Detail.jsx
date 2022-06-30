@@ -93,15 +93,25 @@ console.log(data)
         toDoList = (
             data.tasks.map((todo, index) => {
                 console.log(todo);
-                return (
-                    <div>
-                    <div onClick={() => handleBooleanTask(index)}>
-                        <span>{todo.name}</span>
-                        <span>{todo.complete.toString()}</span>
-                    </div>
-                    <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
-                    </div>
-                )
+                if (!todo.complete) {
+                    return (
+                        <div>
+                        <div onClick={() => handleBooleanTask(index)}>
+                            <span>{todo.name}</span>
+                        </div>
+                        <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div>
+                        <div onClick={() => handleBooleanTask(index)}>
+                            <s>{todo.name}</s>
+                        </div>
+                        <button onClick={() => handleDeleteTodo(index)} >Delete Todo</button>
+                        </div>
+                    )
+                }
             })
         )
     }
@@ -209,6 +219,12 @@ console.log(data)
             </li>
             <li id="todoList">
                  {/* {loading ? <p>loading</p> : data.tasks.map((todo) => {return (<div><p>{todo.name}</p><p>{todo.complete}</p></div>)})} */}
+             
+            {loading ? <p>loading</p> : <p>Complete: {data.complete ? "✅" : "❌"}</p>}<button onClick={() => {handleBoolean("complete")}}>Click Me tO Change</button>
+
+            <button onClick={handleDelete}>Delete Event!</button>
+
+            {/* {loading ? <p>loading</p> : data.tasks.map((todo) => {return (<div><p>{todo.name}</p><p>{todo.complete}</p></div>)})} */}
             {toDoList}
 
 {(editing.todo) ? <div><input type="text" name="task" onChange={(e) => setTask(e.target.value)}/>  <button onClick={handleNewTodo}>add</button></div> : <button onClick={() => handleEdit("todo")}>add todo</button>}
