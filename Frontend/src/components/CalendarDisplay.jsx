@@ -21,7 +21,7 @@ const CalendarDisplay = (data) => {
             return(
                 <div className="card">
                     <p>{project.name}</p>
-                    <p>{project.category}</p>
+                    <p>Category: {project.category}</p>
                     <img className="card-image" src={project.image} alt={`image for ${project.name}`}/>
                 </div>
             )
