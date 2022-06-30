@@ -19,7 +19,6 @@ function App() {
 
   
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,7 +41,7 @@ function App() {
         
        
 <div className='header'>
-            <div className='container'>
+            <div>
                 <ul className="nav">
                     <li>
                       <Link to="/">
