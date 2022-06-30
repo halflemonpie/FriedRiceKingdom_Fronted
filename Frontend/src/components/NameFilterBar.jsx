@@ -1,10 +1,10 @@
 import React from "react";
-// import './App.css'
+import './filters.css'
 export default function NameFilterBar ({handleNameFilter}) {
     return (
-        
-<input className="filters" onChange={handleNameFilter} type="text" name="name-filter" placeholder="filter by name here"/>
-      
+        <div className="filter-container">  
+<input  id="filterName" onChange={handleNameFilter} type="text" name="name-filter" placeholder="filter by name here"/>
+      </div>
         
     )
 }

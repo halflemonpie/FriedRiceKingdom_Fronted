@@ -3,6 +3,7 @@ import App from '../App';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../App.css'
+// import './filters.css'
 import { Link } from 'react-router-dom'
 import NewProject from './NewProject'
 import CatFilterBar from "./CatFilterBar";
@@ -43,10 +44,11 @@ const GetData = ({dataRaw,setData, data, setQueryResult }) =>  {
 const mapVariables = data.map((key) => {
       return (
         <Link to={`/id/${key._id}`}>
-        <div className="cardDisplay" id="card">
-                <h5 className="cardDisplay" >
+        <div id="card">
+                <h5 >
                 {key.name}
                 </h5>
+            
                 {/* the line below it's for testing purpose */}
                 <p>category: {key.category}</p>
                 {/* the line above it's for testing purpose */}
@@ -58,16 +60,19 @@ const mapVariables = data.map((key) => {
 })
 
 return (
-    <div>
+    <div className="filter-container">
       <CatFilterBar handleFilterChange={handleFilterChange}/>
       <NameFilterBar handleNameFilter={handleNameFilter}/>
-           <Link to="/create">
-            <div className="cardDisplay">
-                    <h5 id="card" > Create A New Project</h5>
+     
+      <Link to="/create">
+      <div id="card">
+                    <h5> Create New Project <br></br></h5>
                     {setQueryResult}
-            </div>
+                    </div>
           </Link>
             {mapVariables}
+      
+          
     </div>
 )
 }

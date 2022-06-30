@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: center;
   background: rgb(255, 255, 255);
   height: 100px; 
   width: 100%;
@@ -10,47 +10,56 @@
  body{
    background: rgb(88, 88, 199);
  }
-.filters{
-  background: rgb(228, 228, 228);
-  border-style: solid rgb(46, 42, 68);
-  border-radius: 5px;
+
+
+.container {
+  display: inline-grid; 
+   grid-template-columns: auto auto auto;
+   align-items: center;
 }
+
 #card {
+  display: inline-grid;
+  grid-template-columns: auto auto auto; 
+  display: inline-block;
+  height: 50vh;
+  width: 25vw;
+  text-align: center; 
   border-style: solid;
   border-radius: 10px;
-  width: 15vw;
-  height: 12vw;
   padding: 4vw;
   margin: 2vw;
   align-items: center;
   border-style: solid;
   background: rgb(228, 228, 228);
+  border-radius: 10px;
+  padding: 20px;
+
 }
-
-
-
-
-
-.cardDisplay {
-  display: flex;
-  flex-direction: column;
-  border-radius: solid 20px; 
-  text-align: center;
-  margin: 5px;
+#create{
+  
+  /* display: inline-block; */
+  /* height: 50vh;
+  width: 25vw;
+  text-align: center;  */
+  /* border-style: solid;
+  border-radius: 10px;
   padding: 4vw;
-  margin: 1vw;
-  display: inline-block;
-  width: 300px;
-  font-size: 20px;
+  margin: 2vw;
+  align-items: center;
+  border-style: solid;
+  background: rgb(228, 228, 228);
+  border-radius: 10px;
+  padding: 20px; */
 }
+
 
 li{
-  list-style-type: none;
-  text-decoration: none;
-  left: 100px;
   font-weight: 800;
-  color:rgb(44, 44, 97)
+  color:rgb(44, 44, 97);
+  list-style-type: none;
 }
+
 #logo {
   list-style-type: none;
   padding: 20px;
@@ -68,31 +77,14 @@ li{
   align-items: right;
   padding: 50px;
   list-style-type: none;
-  display: flex;
-  /* border-style: solid; */
-  display: flex;
-  flex-direction: column;
-  
 }
 #calendar{
   align-items: right;
   padding: 50px;
   list-style-type: none;
-  display: flex;
-  /* border-style: solid; */
-  display: flex;
-  flex-direction: column;
-  
 }
 
-#card{
-  text-align: center;
-  margin: 5px;
-  display: inline-block;
-  /* border: 1px solid black; */
-  width: 300px;
-  font-size: 20px;
-}
+ 
 
 
 .form {
@@ -125,12 +117,7 @@ li{
   align-items: left;
 }
 
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgb(0, 0, 0);
-}
+
 
 .react-calendar__month-view__weekdays__weekday {
   display: flex;

@@ -20,18 +20,18 @@ function App() {
   
 
   // console.log(query);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { data: response } = await axios.get(API);
-  //       setData(response);
-  //       setDataRaw(response);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get(API);
+        setData(response);
+        setDataRaw(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
 
 
@@ -45,7 +45,7 @@ function App() {
         
        
 <div className='header'>
-            <div className='container'>
+            <div>
                 <ul className="nav">
                     <li>
                       <Link to="/">
