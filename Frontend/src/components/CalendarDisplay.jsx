@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar'
-import App from '../App.css';
+import './Calendar.css';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 console.log(moment.now());
@@ -20,8 +20,8 @@ const CalendarDisplay = (data) => {
         const projectsDisplay = dataDisplay.map((project) => {
             return(
                 <div id="card">
-                    <p>{project.name}</p>
-                    <p>{project.category}</p>
+                    <p>Name: {project.name}</p>
+                    <p>Category: {project.category}</p>
                 </div>
             )
         })
