@@ -1,0 +1,22 @@
+*{
+    font-family: Helvetica, sans-serif;
+}.detail-card{
+    display: inline-block;
+    height: 80%;
+    width: 92%;
+    text-align: center; 
+    border-style: solid;
+    border-radius: 10px;
+    padding: 4vw;
+    margin: 2vw;
+    align-items: center;
+    border-style: solid;
+    background: rgb(228, 228, 228);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#name{
+    font-size: 20px;
+    font-weight: normal;
+}
