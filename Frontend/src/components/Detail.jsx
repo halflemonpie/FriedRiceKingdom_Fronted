@@ -50,7 +50,7 @@ export default function Detail () {
             console.log(res);
         })
     }
-
+console.log(data)
     const handleNewTodo = () => {
         console.log("data sent");
         let request = {

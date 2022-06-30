@@ -8,6 +8,7 @@ import NewProject from './components/NewProject'
 import Detail from './components/Detail';
 import Logo from './Logo.png'; 
 import Search from './components/Search';
+import Calendar from './components/CalendarDisplay'
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,18 +20,18 @@ function App() {
   
 
   // console.log(query);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data: response } = await axios.get(API);
-        setData(response);
-        setDataRaw(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const { data: response } = await axios.get(API);
+  //       setData(response);
+  //       setDataRaw(response);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
 
 
@@ -39,7 +40,7 @@ function App() {
       <nav>
 
          
-          <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/>
+          {/* <Search getQuery={q => setQuery(q)}  data={data} fetchItems={fetchItems}/> */}
     
         
        
@@ -57,6 +58,9 @@ function App() {
                     <Link to='/'>
                     <li id= "account">My Account</li>
                     </Link>
+                    <Link to="/calendar"> 
+                     <li id= "calendar">Calendar</li>
+                    </Link>
                 </ul>
                 
                 <div className='btn-myaccount'>
@@ -65,6 +69,8 @@ function App() {
                 </div>
             </div>
         </div>
+       
+      
        
       </nav>
 
@@ -79,6 +85,7 @@ function App() {
           <Route path="/" element={<GetData dataRaw={dataRaw} setData={setData} data={data} setQueryResult={setQueryResult} />} />
           <Route path="/create" element={<NewProject />} />
           <Route path="id/:id" element={<Detail />} />
+          <Route path="/calendar" element={<Calendar data={data}/>} />
         </Routes>
       </main>
     </div>

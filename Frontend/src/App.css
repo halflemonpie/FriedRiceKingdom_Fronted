@@ -5,13 +5,16 @@
   background: rgb(255, 255, 255);
   height: 100px; 
   width: 100%;
-  left: 0;
 }
 
  body{
    background: rgb(88, 88, 199);
  }
-
+.filters{
+  background: rgb(228, 228, 228);
+  border-style: solid rgb(46, 42, 68);
+  border-radius: 5px;
+}
 #card {
   border-style: solid;
   border-radius: 10px;
@@ -44,6 +47,9 @@
 li{
   list-style-type: none;
   text-decoration: none;
+  left: 100px;
+  font-weight: 800;
+  color:rgb(44, 44, 97)
 }
 #logo {
   list-style-type: none;
@@ -54,7 +60,7 @@ li{
   align-items: right;
   padding: 50px;
   list-style-type: none;
-  left: 100px;
+  
 
 }
 
@@ -66,9 +72,18 @@ li{
   /* border-style: solid; */
   display: flex;
   flex-direction: column;
-  left: 100px;
+  
 }
-
+#calendar{
+  align-items: right;
+  padding: 50px;
+  list-style-type: none;
+  display: flex;
+  /* border-style: solid; */
+  display: flex;
+  flex-direction: column;
+  
+}
 
 #card{
   text-align: center;
