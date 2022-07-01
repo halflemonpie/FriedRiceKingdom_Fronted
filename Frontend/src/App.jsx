@@ -12,7 +12,7 @@ import Calendar from "./components/CalendarDisplay";
 function App() {
   const [data, setData] = useState([]);
   const [dataRaw, setDataRaw] = useState([]);
-  const API = "http://localhost:8080/projects";
+  const API = "https://friedrice-kingdom.herokuapp.com/projects";
 
   useEffect(() => {
     const fetchData = async () => {

@@ -32,7 +32,7 @@ export default function Detail() {
   });
 
   const apiCall = () => {
-    axios.get(`http://localhost:8080/projects/${params}`).then((res) => {
+    axios.get(`https://friedrice-kingdom.herokuapp.com/projects/${params}`).then((res) => {
       console.log(res.data);
       setData(res.data);
       setLoading(false);
@@ -40,13 +40,13 @@ export default function Detail() {
   };
 
   const apiUpdate = () => {
-    axios.put(`http://localhost:8080/projects/${params}`, data).then((res) => {
+    axios.put(`https://friedrice-kingdom.herokuapp.com/projects/${params}`, data).then((res) => {
       console.log(res);
     });
   };
 
   const handleDelete = () => {
-    axios.delete(`http://localhost:8080/projects/${params}`).then((res) => {
+    axios.delete(`https://friedrice-kingdom.herokuapp.com/projects/${params}`).then((res) => {
       console.log(res);
     });
   };
@@ -62,7 +62,7 @@ export default function Detail() {
     });
 
     axios
-      .put(`http://localhost:8080/projects/newTodo/${params}`, request)
+      .put(`https://friedrice-kingdom.herokuapp.com/projects/newTodo/${params}`, request)
       .then((res) => {
         console.log(res);
         setLoading(false);

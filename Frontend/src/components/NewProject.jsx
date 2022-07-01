@@ -29,7 +29,7 @@ const NewForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/projects", data)
+      .post("https://friedrice-kingdom.herokuapp.com/projects", data)
       .then((resp) => {
         goHome();
       })

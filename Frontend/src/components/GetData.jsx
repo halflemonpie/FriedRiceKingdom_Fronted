@@ -9,13 +9,13 @@ const GetData = ({ dataRaw, setData, data, setQueryResult }) => {
   const handleNameFilter = (e) => {
     const blackListChar = /[()\\\|\/\[\]\{\}*%]/i;
     if (e.target.value == "") {
-      axios.get(`http://localhost:8080/projects/`).then((res) => {
+      axios.get(`https://friedrice-kingdom.herokuapp.com/projects/`).then((res) => {
         setData(res.data);
       });
     } else if (blackListChar.test(e.target.value)) {
     } else {
       axios
-        .get(`http://localhost:8080/projects/name/${e.target.value}`)
+        .get(`https://friedrice-kingdom.herokuapp.com/projects/name/${e.target.value}`)
         .then((res) => {
           setData(res.data);
         });
