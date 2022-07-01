@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Details.css";
 import deleteButton from "./delete.png";
 import addButton from "./add.png";
-import moment from "moment";
 
 export default function Detail() {
   const params = useParams().id;
