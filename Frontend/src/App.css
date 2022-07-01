@@ -43,28 +43,27 @@
 
 }
 
-.card-image {
+.card-image-detail {
   width: 100%;
   max-height: 50%;
 }
 
-#create{
-  
-  /* display: inline-block; */
-  /* height: 50vh;
-  width: 25vw;
-  text-align: center;  */
-  /* border-style: solid;
-  border-radius: 10px;
-  padding: 4vw;
-  margin: 2vw;
-  align-items: center;
-  border-style: solid;
-  background: rgb(228, 228, 228);
-  border-radius: 10px;
-  padding: 20px; */
+.card-image {
+ max-width: 100%;
+ max-height: 70%;
 }
 
+
+#layout {
+  display: flex;
+  flex-direction: column;
+}
+
+#search-field {
+  display: flex; 
+  justify-content: center;
+
+}
 
 li{
   font-weight: 800;
@@ -90,6 +89,7 @@ li{
   padding: 50px;
   list-style-type: none;
 }
+
 #calendar{
   align-items: right;
   padding: 50px;
@@ -97,8 +97,6 @@ li{
 }
 
  
-
-
 .form {
   text-align: center;
   margin: 5px;
@@ -109,8 +107,6 @@ li{
   width: 300px;
   font-size: 20px;
 }
-
-
 
 .input {
   padding: 10px;
@@ -129,8 +125,6 @@ li{
   align-items: left;
 }
 
-
-
 .react-calendar__month-view__weekdays__weekday {
   display: flex;
   text-align: center;
@@ -140,4 +134,17 @@ li{
 
 .react-calendar__tile  {
   color: blue;
+}
+
+#img-icon {
+ font-size: 25px;
+}
+
+#form-box {
+  display: flex;
+  justify-content: center;
+}
+
+#importance-input {
+  min-width: 40%;
 }

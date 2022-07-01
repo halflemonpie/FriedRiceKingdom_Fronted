@@ -22,15 +22,21 @@
 }
 
 img{
-    max-width: 60% ;
+    max-width: 100% ;
+  
     border-radius: 5px;
    
 }
 
 button{
-    border: none;
-    background-color: rgb(228, 228, 228);
+    background-color: aliceblue;
 }
+
+.to-do-list {
+    list-style-type: circle;
+}
+
+
 
 #editButton{
     background-color: transparent;
